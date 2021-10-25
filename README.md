@@ -17,4 +17,4 @@ I am currently learning to use Redux to manage state. In my next project, i will
 
 At first, i use mock-api server for my API server. But my VietNam country is a bit too far away from the mock-api server. Every time i did an update on the server, it took double 70ms to reach their server and went back to my website.
 
-Finally, i choose to use firebase again and everything was faster and simpler.
+Finally, i choose to use firebase again and everything are faster and simpler.
