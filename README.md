@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+This project is to make a website for people to give their feedbacks or their thoughts of an app or some problems online
+![image](https://user-images.githubusercontent.com/73646983/138652116-4792f255-5985-406d-812b-4993487ba2b2.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here is the link to my website, go check it out!
+https://feedbacks-5728d.web.app/
 
-## Available Scripts
+I didnt try to build it as close to the original as possible. I was just having fun when making it.
 
-In the project directory, you can run:
+I have learned a bunch of libraries from making this project. 
+All the libraries i have used in this React project are Styled-Components for css with Javascript. Material-UI for plugin components, icons, grid system, responsive layout. Framer-motion for magical animations. React Router for routing.
 
-### `npm start`
+I added a lot of animations and it might gave you some headaches.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I used ContextAPI to passing props to components. After a while, i have realized that it makes all my components render a lot even though some of them weren't doing anything, and it affects a lots to my web performance.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I am currently learning to use Redux to manage state. In my next project, i will replace ContextAPI with Redux for better performance.
 
-### `npm test`
+At first, i use mock-api server for my API server. But my VietNam country is a bit too far away from the mock-api server. Every time i did an update on the server, it took double 70ms to reach their server and went back to my website.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finally, i choose to use firebase again and everything was faster and simpler.
