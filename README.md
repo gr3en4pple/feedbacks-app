@@ -10,7 +10,7 @@ This website is in a preview mode so all the guests will be logged in as the sam
 I didnt try to build it as close to the original as possible. I was just having fun when making it.
 
 I have learned a bunch of libraries from making this project. 
-All the libraries i have used in this React project are Styled-Components for css with Javascript. Material-UI for plugin components, icons, grid system, responsive layout. Framer-motion for magical animations. React Router for routing.
+All the libraries i have used in this React project are Styled-Components for css with Javascript, re-using components,etc. Material-UI for plugin components, icons, grid system, responsive layout. Framer-motion for magical animations. React Router for routing.
 
 I added a lot of animations and it might gave you some headaches.
 
