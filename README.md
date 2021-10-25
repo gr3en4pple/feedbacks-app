@@ -1,4 +1,4 @@
-This project is to make a website for people to give their feedbacks or their thoughts of an app or some problems online
+This project isfrom frontendmentor.io. Its about making a website for people to give their feedbacks or their thoughts of an app or some problems online
 ![image](https://user-images.githubusercontent.com/73646983/138652116-4792f255-5985-406d-812b-4993487ba2b2.png)
 
 Here is the link to my website, go check it out!
