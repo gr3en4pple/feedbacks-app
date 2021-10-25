@@ -1,7 +1,7 @@
 This project isfrom frontendmentor.io. Its about making a website for people to give their feedbacks or their thoughts of an app or some problems online
 ![image](https://user-images.githubusercontent.com/73646983/138652116-4792f255-5985-406d-812b-4993487ba2b2.png)
 
-Here is the link to my website, go check it out!
+Here is the link to my website, lets add some feedbacks so we can get to know each other 😂
 https://feedbacks-5728d.web.app/
 
 I didnt try to build it as close to the original as possible. I was just having fun when making it.
