@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import RoadMap from './RoadMap';
@@ -6,6 +6,7 @@ import ButtonsInterface from './ButtonsInterface';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
 import { useContextState } from '../StateProvider';
+import { useClickOutside } from '../useClickOutside';
 const Modal = styled.div`
   top: 0;
   bottom: 0;
@@ -55,15 +56,20 @@ const menuAnimate = {
 };
 
 const toggleModal = {
-  visible: { opacity: 1, display: 'block' },
+  visible: { opacity: 1 },
   hidden: {
     opacity: 0,
-    display: 'none',
   },
 };
 
 function Menu() {
-  const { onMenuHandler, isMenuOpen } = useContextState();
+  const { setMenu, isMenuOpen } = useContextState();
+  const menuRef = useRef();
+  const outsideClickHandler = (e) => {
+    if (isMenuOpen) setMenu(false);
+  };
+  useClickOutside(menuRef, outsideClickHandler);
+
   return (
     <AnimatePresence exitBeforeEnter>
       {isMenuOpen && (
@@ -74,25 +80,26 @@ function Menu() {
             exit="hidden"
             as={motion.div}
             variants={toggleModal}
-            onClick={onMenuHandler}
-          />
-          <Wrapper
-            as={motion.div}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={menuAnimate}
           >
-            <ContentWrapper>
-              <IconWrapper onClick={onMenuHandler}>
-                <IconButton color="primary">
-                  <ArrowBackIcon />
-                </IconButton>
-              </IconWrapper>
-              <ButtonsInterface />
-              <RoadMap />
-            </ContentWrapper>
-          </Wrapper>
+            <Wrapper
+              as={motion.div}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={menuAnimate}
+              ref={menuRef}
+            >
+              <ContentWrapper>
+                <IconWrapper onClick={() => setMenu(false)}>
+                  <IconButton color="primary">
+                    <ArrowBackIcon />
+                  </IconButton>
+                </IconWrapper>
+                <ButtonsInterface />
+                <RoadMap />
+              </ContentWrapper>
+            </Wrapper>
+          </Overlay>
         </Modal>
       )}
     </AnimatePresence>

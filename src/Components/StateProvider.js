@@ -37,7 +37,7 @@ function StateProvider({ children, width }) {
   const [type, setType] = useState('All');
   const [isMenuOpen, setMenu] = useState(false);
   const [sort, setSort] = useState('Most Upvotes');
-  const [data, isLoading] = useFirestore(sort);
+  const { data, isLoading } = useFirestore(sort);
 
   useEffect(() => {
     if (width === 'lg' || width === 'md') setMenu(false);
@@ -55,9 +55,6 @@ function StateProvider({ children, width }) {
     };
     dispatch(action);
   }, [width, isMenuOpen, data]);
-  const onMenuHandler = () => {
-    setMenu((prev) => !prev);
-  };
   const sortHandler = (e, newSort) => {
     e.stopPropagation();
     if (sort !== newSort) setSort(newSort);
@@ -108,20 +105,20 @@ function StateProvider({ children, width }) {
     deleteFeedback(id);
   };
   const value = {
-    type,
-    setTypeHandler,
-    sort,
-    sortHandler,
-    Feedbacks,
     data,
-    upvoteHandler,
-    isMenuOpen,
-    onMenuHandler,
-    onFeedbackAdd,
+    Feedbacks,
     isLoading,
+    type,
+    sort,
+    isMenuOpen,
+    setTypeHandler,
+    sortHandler,
+    upvoteHandler,
+    setMenu,
+    onFeedbackAdd,
     onFeedbackEdit,
     onFeedbackDelete,
-    setMenu
+   
   };
   return <ContextAPI.Provider value={value}>{children}</ContextAPI.Provider>;
 }

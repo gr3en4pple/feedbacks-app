@@ -13,7 +13,9 @@ const slideVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      type: 'tween',
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
     },
   },
   exit: (direction) => {
@@ -21,41 +23,21 @@ const slideVariants = {
       x: direction < 0 ? '-100vw' : '100vw',
       opacity: 0,
       transition: {
-        duration: 0.2,
+        duration: 0.1,
       },
     };
   },
 };
 const RoadmapFeedbacksXS = ({
   direction,
-  currentPage,
-  live,
-  planned,
-  inprogress,
   isLoading,
   upvoteHandler,
+  content,
 }) => {
-  const roadMapArr = [
-    {
-      fbList: planned,
-      title: 'Planned',
-      subtitle: 'Currently being developed',
-    },
-    {
-      fbList: inprogress,
-      title: 'In-Progress',
-      subtitle: 'Released features',
-    },
-    {
-      fbList: live,
-      title: 'Live',
-      subtitle: 'Ideas prioritized for research',
-    },
-  ];
   return (
     <AnimatePresence initial={false} exitBeforeEnter custom={direction}>
       <motion.div
-        key={currentPage}
+        key={content.title}
         variants={slideVariants}
         animate="show"
         exit="exit"
@@ -63,7 +45,7 @@ const RoadmapFeedbacksXS = ({
         custom={direction}
       >
         <RoadmapFeedbacks
-          content={roadMapArr[currentPage]}
+          content={content}
           isLoading={isLoading}
           upvoteHandler={upvoteHandler}
         />

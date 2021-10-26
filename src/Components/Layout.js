@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menu from './Navs/Menu';
-import { useLocation } from 'react-router';
-import { useClick } from './ClickProvider';
 import useFirestore from './useFirestore';
 import { CircularProgress } from '@material-ui/core';
-
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -13,15 +10,12 @@ const Wrapper = styled.div`
 `;
 
 function Layout({ children }) {
-  const { onLayoutClickHanlder } = useClick();
-  const [data, isLoading] = useFirestore();
+  const { isLoading } = useFirestore();
   return (
-    <Wrapper onClick={onLayoutClickHanlder}>
+    <Wrapper>
       {isLoading && <CircularProgress className="center" />}
       {children}
       <Menu />
-      
-     
     </Wrapper>
   );
 }

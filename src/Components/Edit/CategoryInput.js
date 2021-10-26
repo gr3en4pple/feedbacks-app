@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   dropdownVariants,
   itemVariants,
@@ -19,10 +19,11 @@ const CategoryInput = ({
   dataerror,
   isDrop,
   dropHandler,
-}) => {
+ 
+},ref) => {
   const { error, onBlurHandler, onFocusHandler } = useError(inputError, input);
   const onClickHandler = (e) => {
-    dropHandler(e);
+    dropHandler(prev => !prev);
     onFocusHandler(e);
   };
   return (
@@ -32,6 +33,7 @@ const CategoryInput = ({
       onBlur={onBlurHandler}
       error={error}
       focus={isDrop}
+      ref={ref}
     >
       <Text style={{ marginLeft: 16 }} component="span">
         {input}
@@ -67,4 +69,4 @@ const CategoryInput = ({
   );
 };
 
-export default CategoryInput;
+export default forwardRef(CategoryInput);

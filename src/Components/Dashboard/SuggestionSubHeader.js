@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Box, SvgIcon, Typography, withWidth } from '@material-ui/core';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -13,10 +13,20 @@ import {
   Item,
 } from './StyleDashBoard';
 import { useContextState } from '../StateProvider';
-import { useClick } from '../ClickProvider';
+import { useClickOutside } from '../useClickOutside';
 const SuggestionSubHeader = ({ width }) => {
-  const { Feedbacks:{suggestion}, sortHandler, sort } = useContextState();
-  const { isSortDrop, sortDropHandler } = useClick();
+  const {
+    Feedbacks: { suggestion },
+    sortHandler,
+    sort,
+  } = useContextState();
+  const [isSortDrop, setDrop] = useState(false);
+  const sortRef = useRef();
+  const clickOutsideHandler = (e) => {
+    if (isSortDrop) setDrop((prev) => !prev);
+  };
+
+  useClickOutside(sortRef, clickOutsideHandler);
 
   const dropdownText = [
     'Most Upvotes',
@@ -39,9 +49,9 @@ const SuggestionSubHeader = ({ width }) => {
       <Text weight="400" variant="subtitle2">
         Sort by:
       </Text>
-      <div className="dropdown-list">
+      <div className="dropdown-list" ref={sortRef}>
         <NormalButton
-          onClick={sortDropHandler}
+          onClick={() => setDrop((prev) => !prev)}
           disableRipple
           endIcon={
             <ExpandMoreOutlinedIcon

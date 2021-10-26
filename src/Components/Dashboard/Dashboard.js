@@ -22,15 +22,6 @@ const childrenVariants = {
     opacity: 1,
   },
 };
-// export const countTotalCMT = (commentList) => {
-//   let result = 0;
-//   result += commentList.length;
-//   return commentList.reduce((accu,comment) => {
-//     accu += comment.comments.replies.length;
-//     return accu;
-//   },result);
-// };
-
 const MotionLink = motion(StyledLink);
 
 function Dashboard({ width }) {

@@ -43,6 +43,10 @@ export const Text = styled(Typography)`
 export const NormalButton = styled(Button)`
   text-transform: none;
   font-size: 16px;
+  
+  @media(max-width: 400px) {
+    font-size: 13px;
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -60,7 +64,7 @@ export const ContentWrapper = styled.div`
       (props.currentpage === 2 && '#62bcfa')};
     bottom: 0;
     width: calc(100% / 3);
-    transition: 0.25s ease-in-out;
+    transition: 0.25s linear;
 
     left: ${(props) => props.move}%;
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { withWidth, Box } from '@material-ui/core';
 import { useHistory, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -19,13 +19,24 @@ import TitleInput from './TitleInput';
 import DetailsInput from './DetailsInput';
 import CategoryInput from './CategoryInput';
 import { inputReducer, initialInput } from './InputReducer';
-import { useClick } from '../ClickProvider';
+import { useClickOutside } from '../useClickOutside';
 
 function Add({ width }) {
   const { onFeedbackAdd, onFeedbackEdit, onFeedbackDelete, data } =
     useContextState();
-  const { isCategoryDrop, cateDropHandler, isStatusDrop, statusDropHandler } =
-    useClick();
+
+  const [isCategoryDrop, setCategoryDrop] = useState(false);
+  const [isStatusDrop, setStatusDrop] = useState(false);
+  const categoryRef = useRef();
+  const statusRef = useRef();
+  const outsideHandler = (state, setState) => {
+    if (state === true) setState(false);
+  };
+  useClickOutside(categoryRef, () =>
+    outsideHandler(isCategoryDrop, setCategoryDrop)
+  );
+  useClickOutside(statusRef, () => outsideHandler(isStatusDrop, setStatusDrop));
+  
   const { id } = useParams();
   const [emptyPage, setEmptyPage] = useState(false);
   useEffect(() => {
@@ -122,6 +133,7 @@ function Add({ width }) {
               </InputWrapper>
               <InputWrapper content={contentArr[1]}>
                 <CategoryInput
+                  ref={categoryRef}
                   contentArr={CategoryArr}
                   input={categoryInput}
                   onCateClick={onChangeHandler}
@@ -129,7 +141,7 @@ function Add({ width }) {
                   dataname="categoryInput"
                   dataerror="categoryError"
                   isDrop={isCategoryDrop}
-                  dropHandler={cateDropHandler}
+                  dropHandler={setCategoryDrop}
                 />
               </InputWrapper>
               {id && (
@@ -142,7 +154,8 @@ function Add({ width }) {
                     dataname="statusInput"
                     dataerror="statusError"
                     isDrop={isStatusDrop}
-                    dropHandler={statusDropHandler}
+                    dropHandler={setStatusDrop}
+                    ref={statusRef}
                   />
                 </InputWrapper>
               )}

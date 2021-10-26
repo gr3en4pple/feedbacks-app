@@ -53,7 +53,6 @@ const useFirestore = (sortType) => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     const order = sortCheck(sortType);
-    setLoading(true);
     const unsubscribe = onSnapshot(
       query(collection(db, 'feedbacks'), orderBy(order.prop, order.order)),
       (snapshot) => {
@@ -61,7 +60,6 @@ const useFirestore = (sortType) => {
         setLoading(false);
       }
     );
-
     return unsubscribe;
   }, [sortType]);
   const sortCheck = (newSort) => {
@@ -78,7 +76,7 @@ const useFirestore = (sortType) => {
         return { prop: 'upvote', order: 'desc' };
     }
   };
-  return [data, isLoading];
+  return { data, isLoading };
 };
 
 export default useFirestore;

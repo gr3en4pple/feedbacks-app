@@ -45,6 +45,7 @@ const Roadmap = ({ width }) => {
             direction={direction}
             currentPage={page}
             onRoadmapChange={onRoadmapChange}
+            content={roadMapArr}
           />
         </>
       )}
@@ -76,12 +77,8 @@ const Roadmap = ({ width }) => {
           {(width === 'xs' || width === 'sm') && (
             <RoadmapFeedbacksXS
               direction={direction}
-              currentPage={page}
-              live={live}
-              planned={planned}
-              inprogress={inprogress}
-              isLoading={isLoading}
               upvoteHandler={upvoteHandler}
+              content={roadMapArr[page]}
             />
           )}
         </Box>

@@ -42,8 +42,7 @@ const MenuBTN = styled.div`
 `;
 
 const MobileScreen = () => {
-  const { onMenuHandler } = useContextState();
-
+  const { setMenu } = useContextState();
   return (
     <Grid item container>
       <MobileWrapper linear>
@@ -56,7 +55,7 @@ const MobileScreen = () => {
           </STypo>
         </LogoBtn>
 
-        <MenuBTN onClick={onMenuHandler}>
+        <MenuBTN onClick={() => setMenu(true)}>
           <SvgIcon htmlColor="white" fontSize="large">
             <MenuIcon />
           </SvgIcon>
