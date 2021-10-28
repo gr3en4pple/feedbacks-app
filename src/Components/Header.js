@@ -1,21 +1,20 @@
 import React from 'react';
 import '../App.css';
-import {
-  HeaderWrapper,
-  NormalButton,
-} from './Dashboard/StyleDashBoard';
+import { HeaderWrapper, NormalButton } from './Dashboard/StyleDashBoard';
 import { withWidth } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
-  display:inline-block;
-  text-decoration:none;
-`
-function Header({width , OptionComponent}) {
-  
+  display: inline-block;
+  text-decoration: none;
+`;
+function Header({ width, OptionComponent, sticky }) {
   return (
-    <HeaderWrapper border={width === 'lg' || width === 'md' ? '5px' : 0}>
+    <HeaderWrapper sticky={sticky} 
+    border={width === 'lg' || width === 'md' ? '5px' : 0}
+    
+    >
       {OptionComponent}
       <StyledLink to="/add">
         <NormalButton

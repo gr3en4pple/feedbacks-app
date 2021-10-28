@@ -5,6 +5,7 @@ import RoadmapFeedbacks from './RoadmapFeedbacks';
 const slideVariants = {
   hide: (direction) => {
     return {
+      
       x: direction > 0 ? '-100vw' : '100vw',
       opacity: 0,
     };
@@ -13,9 +14,11 @@ const slideVariants = {
     x: 0,
     opacity: 1,
     transition: {
+      
       type: 'spring',
       stiffness: 300,
       damping: 30,
+      
     },
   },
   exit: (direction) => {
@@ -23,7 +26,7 @@ const slideVariants = {
       x: direction < 0 ? '-100vw' : '100vw',
       opacity: 0,
       transition: {
-        duration: 0.1,
+        duration: 0.1
       },
     };
   },

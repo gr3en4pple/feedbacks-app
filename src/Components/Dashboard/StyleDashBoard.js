@@ -9,7 +9,6 @@ export const dropdownVariants = {
     originY: 0,
     y: 0,
     opacity: 1,
-    
   },
   hide: {
     scaleY: 0,
@@ -17,11 +16,10 @@ export const dropdownVariants = {
     y: '-10%',
     opacity: 0,
     transition: {
-     duration:0.25
+      duration: 0.25,
     },
   },
 };
-
 
 export const HeaderWrapper = styled.header`
   background: rgb(55, 63, 104);
@@ -30,7 +28,11 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  ${(props) =>
+    props.sticky &&
+    `position:sticky;
+  top:0;
+  z-index:1000;`}
 `;
 
 export const StyledLink = styled(Link)`

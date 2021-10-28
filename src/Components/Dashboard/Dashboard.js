@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../App.css';
 import Feedback from './Feedback';
 import SuggestionHeader from './SuggestionHeader';
@@ -31,52 +31,56 @@ function Dashboard({ width }) {
     type,
     isLoading,
   } = useContextState();
-
-  let FeedbacksFilter;
-  if (type === 'All') FeedbacksFilter = [...suggestion];
-  else FeedbacksFilter = suggestion.filter((element) => element.type === type);
+  const [FeedbacksFilter, setFeedbacksFilter] = useState([]);
+  useEffect(() => {
+    if (type === 'All') setFeedbacksFilter([...suggestion]);
+    else
+      setFeedbacksFilter(suggestion.filter((element) => element.type === type));
+  }, [type, suggestion]);
 
   return (
-    <AnimatePresence>
-      <Grid
-        component={motion.div}
-        item
-        container
-        direction="column"
-        variants={variants}
-        initial="hidden"
-        animate="show"
-        lg={9}
-        md={12}
-      >
-        <SuggestionHeader />
-        <DashBoardWrapper pX={width === 'xs'}>
-          <AnimateSharedLayout>
-            {FeedbacksFilter.map((feedback) => (
-              <MotionLink
-                variants={childrenVariants}
-                transition={{
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 40,
-                }}
-                layout
-                key={feedback.id}
-                to={`/feedback/${feedback.id}`}
-              >
-                <Feedback
-                  totalComments={feedback.totalComments}
-                  feedback={feedback}
-                  isLoading={isLoading}
-                  onUpvote={upvoteHandler}
-                  ellipsis="true"
-                />
-              </MotionLink>
-            ))}
-          </AnimateSharedLayout>
-        </DashBoardWrapper>
-      </Grid>
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        <Grid
+          component={motion.div}
+          item
+          container
+          direction="column"
+          variants={variants}
+          initial="hidden"
+          animate="show"
+          lg={9}
+          md={12}
+        >
+          <SuggestionHeader sticky={width === 'xs' || width === 'sm'} />
+          <DashBoardWrapper pX={width === 'xs'}>
+            <AnimateSharedLayout>
+              {FeedbacksFilter.map((feedback) => (
+                <MotionLink
+                  variants={childrenVariants}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 40,
+                  }}
+                  layout
+                  key={feedback.id}
+                  to={`/feedback/${feedback.id}`}
+                >
+                  <Feedback
+                    totalComments={feedback.totalComments}
+                    feedback={feedback}
+                    isLoading={isLoading}
+                    onUpvote={upvoteHandler}
+                    ellipsis="true"
+                  />
+                </MotionLink>
+              ))}
+            </AnimateSharedLayout>
+          </DashBoardWrapper>
+        </Grid>
+      </AnimatePresence>
+    </>
   );
 }
 
