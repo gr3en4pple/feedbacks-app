@@ -9,7 +9,7 @@ import {
   onSnapshot,
   orderBy,
   query,
-  deleteDoc,
+  deleteDoc
 } from '@firebase/firestore';
 
 export const addComment = async (newComment, feedbackID, currentNum) => {

@@ -97,3 +97,27 @@ export const DashBoardWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
 `;
+
+export const EmptyFeedbacksWrapper = styled.div`
+  background: white;
+  border-radius: 10px;
+  height: 550px;
+  position: relative;
+  & > .empty__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: clamp(50%, 500px, 90%);
+    & > .empty__description {
+      padding: 16px 0;
+    }
+    & > .empty__button {
+    }
+  }
+
+  width: 100%;
+`;
+
+export const EmptyFeedbacksInner = styled.div``;

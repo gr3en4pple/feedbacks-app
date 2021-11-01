@@ -64,7 +64,7 @@ export const ContentWrapper = styled.div`
       (props.currentpage === 2 && '#62bcfa')};
     bottom: 0;
     width: calc(100% / 3);
-    transition: 0.25s linear;
+    transition: 0.35s linear;
 
     left: ${(props) => props.move}%;
   }

@@ -22,7 +22,7 @@ const reducer = (state, action) => {
     }
 
     default:
-      throw new Error('what the fuck!');
+      throw new Error('Case not found!');
   }
 };
 
@@ -37,6 +37,7 @@ const useMultilineInput = (maxlength, mySubmit) => {
   const { input, inputLength, isValid } = state;
   const onChangeHandler = (e) => {
     const text = e.target.value;
+
     const action = {
       type: 'ON_CHANGE',
       value: text,

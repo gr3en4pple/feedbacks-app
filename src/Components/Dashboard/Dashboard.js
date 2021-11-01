@@ -6,7 +6,7 @@ import { Grid, withWidth } from '@material-ui/core';
 import { useContextState } from '../StateProvider';
 import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { DashBoardWrapper, StyledLink } from './StyleDashBoard';
-
+import EmptyFeedbacks from './EmptyFeedbacks';
 const variants = {
   show: {
     transition: {
@@ -53,7 +53,9 @@ function Dashboard({ width }) {
           md={12}
         >
           <SuggestionHeader sticky={width === 'xs' || width === 'sm'} />
+          
           <DashBoardWrapper pX={width === 'xs'}>
+         { FeedbacksFilter.length === 0 && <EmptyFeedbacks/> }
             <AnimateSharedLayout>
               {FeedbacksFilter.map((feedback) => (
                 <MotionLink

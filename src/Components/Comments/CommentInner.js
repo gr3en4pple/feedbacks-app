@@ -63,6 +63,7 @@ const CommentInner = ({ width, comment, onReplySubmit, onDeleteComment }) => {
       animate="show"
       exit="hide"
       variants={commentVariants}
+      whiteSpace="pre-line"
     >
       <Box>
         <StyledAvatar alt="avatar" src={comment.ava} />

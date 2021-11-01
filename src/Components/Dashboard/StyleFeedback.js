@@ -4,14 +4,17 @@ import { InterfaceBTN } from '../Navs/ButtonsInterface';
 
 export const FeedbackWrapper = styled.div`
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.2s ease-out ;
   min-height: 120px;
   background: #fff;
   border-radius: 10px;
   padding: 20px;
   display: flex;
+  
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.015);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+  
   }
   ${(props) =>
     props.roadmap &&
